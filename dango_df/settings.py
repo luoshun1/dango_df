@@ -27,7 +27,7 @@ SECRET_KEY = '_^=#4v@mg++3z%8v9ho6%585%iou_1quz93v%qlm&qypi-4cyu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -117,7 +117,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'advanced',
+    'theme': 'advance',
     'width': 600,
     'height': 400,
 }
