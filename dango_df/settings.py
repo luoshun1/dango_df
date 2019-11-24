@@ -121,3 +121,16 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 600,
     'height': 400,
 }
+
+# 邮箱的smtp服务器
+EMAIL_HOST = 'smtp.163.com'
+# smtp服务器的端口号，不同的服务器有不同的端口号，可以百度查找
+EMAIL_PORT = 25
+#发送邮件的邮箱
+EMAIL_HOST_USER = 'ls_luoshun@163.com'
+#在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = 'py123456'
+#收件人看到的发件人
+EMAIL_FROM = 'df<ls_luoshun@163.com>'
+#是否使用安全传输协议
+# EMAIL_USE_TLS = False
