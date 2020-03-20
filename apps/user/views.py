@@ -114,6 +114,7 @@ class RegisterView(View):
             user = User.objects.get(username=username)
         except User.DoesNotExist:
             # 用户名不存在
+            print('===asdfas===--------------')
             user = None
 
         if user:
@@ -167,12 +168,14 @@ class LoginView(View):
         # 判断是否记住了用户名
         if 'username' in request.COOKIES:
             username = request.COOKIES.get('username')
+            pwd = request.COOKIES.get('pwd')
+            print('-----------------------asdf---------', pwd)
             checked = 'checked'
         else:
             username = ''
             checked = ''
 
-        return render(request, 'login.html', {'username':username})
+        return render(request, 'login.html', {'username':username, 'checked':checked, 'pwd':pwd})
 
     def post(self, request):
         '''登录校验'''
@@ -188,7 +191,7 @@ class LoginView(View):
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
-                # 用户已激活
+                # 用户已激活0
                 # 记录用户的登录状态
                 login(request, user)
 
@@ -200,9 +203,11 @@ class LoginView(View):
 
                 if remember == 'on':
                     # 记住用户名
-                    response = set_cokkin('username', username, max_age=7*24*3600)
+                    response.set_cookie('username', username, max_age=7*24*3600)
+                    response.set_cookie('pwd', password, max_age=7*24*3600)
                 else:
                     response.delete_cookie('username')
+                    response.delete_cookie('pwd')
                 
                 # 返回response
                 return response
@@ -212,7 +217,6 @@ class LoginView(View):
         else:
             # 用户名或密码错误
             return render(request, 'login.html', {'errmsg':'用户名或密码错误'})
-
 
 
 
